@@ -8,9 +8,10 @@ You need to:
 - An assembler like NASM.
 
 ## How to compile it:
-First thing, assemble the MBR source code by clicking "make.bat".
-If you see binary.bin, binary.img and binary.iso in your path, that means the code is compiled.
-Now convert it to C format, use bin2cpp.py binary.bin exported.c.
-Finally, compile the C++ code, and test it in a virtual machine.
+- First thing, assemble the MBR source code by clicking "make.bat".
+- If you see binary.bin, binary.img and binary.iso in your path, that means the code is compiled.
+- Now convert it to C format, use "bin2cpp.py binary.bin exported.c." in your command shell.
+- Then rename exported.c to exported.h.
+- Finally, compile the C++ code, and test it in a virtual machine.
 
 ## WARNING: Don't test it in your physical machine! For educational purposes only!
