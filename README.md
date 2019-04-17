@@ -10,7 +10,7 @@ You need to:
 ## How to compile it:
 - First thing, assemble the MBR source code by clicking "make.bat".
 - If you see binary.bin, binary.img and binary.iso in your path, that means the code is compiled.
-- Now convert it to C format, use "bin2cpp.py binary.bin exported.c." in your command shell.
+- Now convert it to C format, use ` bin2cpp.py binary.bin exported.c. ` in your command shell.
 - Then rename exported.c to exported.h.
 - Finally, compile the C++ code, and test it in a virtual machine.
 
