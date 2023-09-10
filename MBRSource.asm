@@ -1,18 +1,18 @@
 ;==============================================================================================================================================;
 ;==============================================================================================================================================;
-[BITS 16] ;tell the compiler that we are working in 16 bits mode.
+[BITS 16]
 [ORG 0x7c00]
 
 start:
 	mov ax, 03h 			;Clear the screen.
-	int 10h					;BIOS call.
-	mov ah, 0Eh 			;print character service.
-	mov al, "K"			;The character is K
-	int 0x10
-	jmp $				;Infinity loop
+	int 10h				;BIOS interrupt call.
+	mov ah, 0Eh 			;BIOS service for printing a character
+	mov al, "K"			
+	int 0x10			;BIOS interrupt call.
+	jmp $				;halt
 
 times 510 - ($-$$) db 0		;fill the rest of the file with zeros.
-DW 0xAA55					;THE MAGIC NUMBER!!!!
+DW 0xAA55					;THE MAGIC NUMBER!
 
 ;==============================================================================================================================================;
 ;==============================================================================================================================================;
